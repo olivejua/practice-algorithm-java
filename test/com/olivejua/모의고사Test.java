@@ -1,19 +1,22 @@
 package com.olivejua;
 
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class 모의고사Test {
 
-//    @Test
-//    public void main() {
-//    }
+    public 모의고사 obj;
+
+    @Before
+    public void setUp() throws Exception {
+        obj = new 모의고사();
+    }
 
     @Test
     public void solution1() {
-        모의고사 obj = new 모의고사();
-
         int[] answers = {1,2,3,4,5};
 
         assertArrayEquals(obj.solution(answers), new int[]{1});
@@ -21,8 +24,6 @@ public class 모의고사Test {
 
     @Test
     public void solution2() {
-        모의고사 obj = new 모의고사();
-
         int[] answers = {1,3,2,4,2};
 
         assertArrayEquals(obj.solution(answers), new int[]{1,2,3});
@@ -30,10 +31,29 @@ public class 모의고사Test {
 
     @Test
     public void solution3() {
-        모의고사 obj = new 모의고사();
+        int[] answers = {2,5,1,3,4};
 
+        assertArrayEquals(obj.solution(answers), new int[]{2});
+    }
+
+    @Test
+    public void better_solution1() {
+        int[] answers = {1,2,3,4,5};
+
+        assertArrayEquals(obj.better_solution(answers), new int[]{1});
+    }
+
+    @Test
+    public void better_solution2() {
         int[] answers = {1,3,2,4,2};
 
-        assertArrayEquals(obj.solution(answers), new int[]{1,2,3});
+        assertArrayEquals(obj.better_solution(answers), new int[]{1,2,3});
+    }
+
+    @Test
+    public void better_solution3() {
+        int[] answers = {2,5,1,3,4};
+
+        assertArrayEquals(obj.better_solution(answers), new int[]{2});
     }
 }

@@ -3,9 +3,9 @@ package com.olivejua;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class 완주하지못한선수 {
+public class 완주하지_못한_선수 {
     public static void main(String[] args) {
-        완주하지못한선수 _this = new 완주하지못한선수();
+        완주하지_못한_선수 _this = new 완주하지_못한_선수();
 
 //        String[] participant = {"leo", "kiki", "eden"};
         String[] participant = {"marina", "josipa", "nikola", "vinko", "filipa"};

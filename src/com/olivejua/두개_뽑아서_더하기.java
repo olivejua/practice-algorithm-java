@@ -3,7 +3,7 @@ package com.olivejua;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class 두개뽑아서더하기 {
+public class 두개_뽑아서_더하기 {
 
     public static void main(String[] args) {
         int[] numbers = {2,1,3,4,1};

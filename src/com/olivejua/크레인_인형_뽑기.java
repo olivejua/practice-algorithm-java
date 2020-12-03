@@ -1,13 +1,8 @@
 package com.olivejua;
 
-import java.io.Console;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Stack;
-import java.util.stream.Collectors;
 
-public class 크레인인형뽑기 {
+public class 크레인_인형_뽑기 {
 
     Stack<Integer> stack = new Stack<>();
 
@@ -20,7 +15,7 @@ public class 크레인인형뽑기 {
                 {3,5,1,3,1}};
         int[] moves = {1,5,3,5,1,2,1,4};
 
-        크레인인형뽑기 _this = new 크레인인형뽑기();
+        크레인_인형_뽑기 _this = new 크레인_인형_뽑기();
         int result = _this.solution(board, moves);
 
         System.out.println("result: " + result);
