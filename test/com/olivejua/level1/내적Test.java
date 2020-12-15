@@ -35,4 +35,15 @@ public class 내적Test {
 
         assertEquals(actualAnswer, expectedAnswer);
     }
+
+    @Test
+    public void solutionTest3() {
+        int[] a = {-1,0,1};
+        int[] b = {1,0,-1};
+
+        int expectedAnswer = -2;
+        int actualAnswer = obj.solution(a, b);
+
+        assertEquals(actualAnswer, expectedAnswer);
+    }
 }
