@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class GroupAnagrams {
 
-    public String[][] resolve1(String[] inputs) {
+    public String[][] solve1(String[] inputs) {
         Map<String, List<String>> dict = new HashMap<>();
 
         for (String input : inputs) {

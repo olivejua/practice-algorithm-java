@@ -11,7 +11,7 @@ import java.util.Stack;
 
 public class ValidPalindrome {
 
-    public boolean resolve1(String input) {
+    public boolean solve1(String input) {
         StringBuilder letters = new StringBuilder();
 
         for (char letter : input.toLowerCase().toCharArray()) {
@@ -25,7 +25,7 @@ public class ValidPalindrome {
         return originalLetters.equals(reversedLetters);
     }
 
-    public boolean resolve2(String input) {
+    public boolean solve2(String input) {
         Stack<Character> stack = new Stack<>();
         List<Character> originalLetters = new ArrayList<>();
 
@@ -43,7 +43,7 @@ public class ValidPalindrome {
         return true;
     }
 
-    public boolean resolve3(String input) {
+    public boolean solve3(String input) {
         List<Character> letters = new ArrayList<>();
 
         for (char c : input.toLowerCase().toCharArray()) {

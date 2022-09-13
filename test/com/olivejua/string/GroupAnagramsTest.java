@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class GroupAnagramsTest {
-    private final GroupAnagrams target = new GroupAnagrams();
+    private final GroupAnagrams PROBLEM = new GroupAnagrams();
 
     private final String[] INPUT = new String[] {"eat", "tea", "tan", "ate", "nat", "bat"};
     private final String[][] OUTPUT = new String[][] {
@@ -15,8 +15,8 @@ public class GroupAnagramsTest {
     };
 
     @Test
-    public void testResolve1() {
-        String[][] actualResult = target.resolve1(INPUT);
+    public void testSolve1() {
+        String[][] actualResult = PROBLEM.solve1(INPUT);
         assertEquals(OUTPUT.length, actualResult.length);
     }
 }
