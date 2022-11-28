@@ -6,8 +6,8 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class 가장_긴_증가하는_부분_수열 {
+    static int[] cnt;
     static int[] numbers;
-    static Integer[] memo;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -15,35 +15,29 @@ public class 가장_긴_증가하는_부분_수열 {
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         numbers = new int[n];
-        memo = new Integer[n];
-
-        for (int i = 1; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             numbers[i] = Integer.parseInt(st.nextToken());
         }
 
-        for (int i = 0; i < n; i++) {
-            dp(i);
+        cnt = new int[n];
+        cnt[0] = 1;
+        for (int i = 1; i < n; i++) {
+            cnt[i] = 1;
+
+            for (int j = 0; j < i; j++) {
+                if (numbers[j] < numbers[i] && cnt[i] <= cnt[j]) {
+                    cnt[i] = cnt[j] + 1;
+                }
+            }
+
+            System.out.printf("numbers[%d]: %d, cnt[%d]: %d\n", i, numbers[i], i, cnt[i]);
         }
 
-        int max = memo[0];
-        for (int i = 1; i < n; i++) {
-            max = Math.max(max, memo[i]);
+        int max = 0;
+        for (int i = 0; i < n; i++) {
+            max = Math.max(max, cnt[i]);
         }
 
         System.out.println(max);
-    }
-
-    static int dp(int maxIdx) {
-        if (memo[maxIdx] == null) {
-            memo[maxIdx] = 1;
-
-            for (int i = maxIdx - 1; i >= 0; i--) {
-                if (numbers[i] < numbers[maxIdx]) {
-                    memo[maxIdx] = Math.max(memo[maxIdx], dp(i) + 1);
-                }
-            }
-        }
-
-        return memo[maxIdx];
     }
 }
