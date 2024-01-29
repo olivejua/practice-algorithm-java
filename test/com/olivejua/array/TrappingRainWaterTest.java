@@ -11,6 +11,6 @@ public class TrappingRainWaterTest {
     public void testSolve1() {
         int[] input = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
 
-        assertThat(PROBLEM.solve1(input)).isEqualTo(6);
+        assertThat(PROBLEM.trap1(input)).isEqualTo(6);
     }
 }
