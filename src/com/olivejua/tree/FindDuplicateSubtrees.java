@@ -41,7 +41,6 @@ public class FindDuplicateSubtrees {
         return result;
     }
 
-
     public String serialize(TreeNode root) {
         if (root == null) {
             return "";
