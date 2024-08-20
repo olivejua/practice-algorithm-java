@@ -31,4 +31,29 @@ public class CountCompleteTreeNodes {
 
         return count;
     }
+
+    public TreeNode insertNode(TreeNode root, int insertValue) {
+        TreeNode insertNode = new TreeNode(insertValue);
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+
+            if (node.left == null) {
+                node.left = insertNode;
+                break;
+            } else if (node.right == null) {
+                node.right = insertNode;
+                break;
+            } else {
+                queue.add(node.left);
+                queue.add(node.right);
+            }
+        }
+
+        return root;
+    }
+
+
 }
