@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class NumberOfIslandsTest {
-    private final NumberOfIslands problem = new NumberOfIslands();
+    private final NumberOfIslands2 problem = new NumberOfIslands2();
 
     @Test
     public void solve1() {
@@ -19,5 +19,10 @@ public class NumberOfIslandsTest {
         int result = problem.numIslands(grid);
 
         assertThat(result).isEqualTo(2);
+    }
+
+    @Test
+    public void name() {
+        System.out.println(1000 % 300);
     }
 }
