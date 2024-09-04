@@ -53,4 +53,35 @@ public class AddBoldTagInString {
         return sb.toString();
     }
 
+
+    public String addBoldTag2(String s, String[] dict) {
+        boolean[] bold = new boolean[s.length()];
+
+        for (String word : dict) {
+            int start = s.indexOf(word);
+
+            while (start != -1) {
+                for (int i = start; i < start + word.length(); i++) {
+                    bold[i] = true;
+                }
+
+                start = s.indexOf(word, start + 1);
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            if (bold[i] && (i == 0 || !bold[i-1])) {
+                sb.append("<b>");
+            }
+
+            sb.append(s.charAt(i));
+
+            if (bold[i] && (i == s.length() - 1 || !bold[i+1])) {
+                sb.append("</b>");
+            }
+        }
+
+        return sb.toString();
+    }
 }
