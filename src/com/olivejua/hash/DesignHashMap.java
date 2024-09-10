@@ -31,24 +31,26 @@ public class DesignHashMap {
 
         Node node = nodes[index];
         if (node.key == key) {
-            Node newNode = new Node(key, value);
-            newNode.next = node;
-            nodes[index] = newNode;
+            nodes[index].val = value;
             return;
         }
 
         if (node.next != null) {
             Node newNode = new Node(key, value);
 
+            Node prev = node;
             node = node.next;
             while (node != null) {
                 if (node.key == key) {
-                    newNode.next = node;
-                    nodes[index] = newNode;
+                    node.val = value;
                 }
 
-                node = node.next;
+                Node temp = node;
+                prev = node;
+                node = temp.next;
             }
+
+            prev.next = newNode;
         } else {
             nodes[index].next = new Node(key, value);
         }
@@ -87,7 +89,7 @@ public class DesignHashMap {
 
         Node node = nodes[index];
         if (node.key == key) {
-            nodes[index] = null;
+            nodes[index] = node.next;
             return;
         }
 
