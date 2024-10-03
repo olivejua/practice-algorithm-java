@@ -2,30 +2,32 @@ package com.olivejua.sort;
 
 public class QuickSort {
 
-    public int[] quickSort(int[] arr, int low, int high) {
-        if (low < high) {
-            int pivot = partition(arr, low, high);
-            quickSort(arr, low, pivot - 1);
-            quickSort(arr, pivot + 1, high);
+    public int[] quickSort(int[] A, int lo, int hi) {
+        if (lo < hi) {
+            int pivot = partition(A, lo, hi);
+            quickSort(A, lo, pivot-1);
+            quickSort(A, pivot+1, hi);
         }
 
-        return arr;
+        return A;
     }
 
-    public int partition(int[] arr, int low, int high) {
-        int pivot = arr[high];
-        int left = low;
-        for (int right = low; right < high; right++) {
-            if (arr[right] < pivot) {
-                int temp = arr[left];
-                arr[left] = arr[right];
-                arr[right] = temp;
+    public int partition(int[] A, int lo, int hi) {
+        int pivot = A[hi];
+        int left = lo;
+
+        for (int right = lo; right < hi; right++) {
+            if (A[right] < pivot) {
+                int temp = A[left];
+                A[left] = A[right];
+                A[right] = temp;
                 left++;
             }
         }
-        int temp = arr[left];
-        arr[left] = arr[high];
-        arr[high] = temp;
+
+        int temp = A[left];
+        A[left] = A[hi];
+        A[hi] = temp;
         return left;
     }
 }
