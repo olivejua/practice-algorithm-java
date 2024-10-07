@@ -51,7 +51,7 @@ public class TaskSchedulerTest {
         char[] tasks = {'A', 'A', 'A', 'B', 'B', 'B', 'C', 'C', 'C', 'D', 'D', 'E'};
         int n = 2;
 
-        int result = problem.leastInterval(tasks, n);
+        int result = problem.leastInterval2(tasks, n);
 
         Assertions.assertThat(result).isEqualTo(12);
     }

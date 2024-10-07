@@ -54,11 +54,12 @@ public class TaskScheduler {
 
     public int leastInterval2(char[] tasks, int n) {
         int[] freqs = new int[26];
+
         for (char task : tasks) {
-            freqs[task-'A']++;
+            freqs[task - 'A'] += 1;
         }
 
-        Queue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);
         for (int freq : freqs) {
             if (freq > 0) {
                 pq.add(freq);
@@ -66,31 +67,32 @@ public class TaskScheduler {
         }
 
         int result = 0;
-
-        while (true) {
-            int intervals = 0;
+        while(true) {
             List<Integer> list = new ArrayList<>();
+            int intervals = 0;
 
             while (!pq.isEmpty()) {
-                int frequency = pq.poll();
-
+                Integer frequency = pq.poll();
                 if (intervals < n + 1) {
-                    intervals++;
-                    result++;
+                    intervals += 1;
+                    result += 1;
 
                     if (frequency > 1) {
-                        list.add(frequency - 1);
+                        list.add(frequency-1);
                     }
                 } else {
                     list.add(frequency);
                 }
             }
+
             if (list.isEmpty()) {
                 break;
             }
+
             pq.addAll(list);
             result += n + 1 - intervals;
         }
 
+        return result;
     }
 }
