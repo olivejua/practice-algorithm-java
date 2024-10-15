@@ -10,42 +10,42 @@ public class FibonacciNumberTest {
 
     @Test
     public void test1() {
-        int result = problem.fib2(2);
+        int result = problem.fib(2);
 
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void test2() {
-        int result = problem.fib2(3);
+        int result = problem.fib(3);
 
         Assertions.assertThat(result).isEqualTo(2);
     }
 
     @Test
     public void test3() {
-        int result = problem.fib2(4);
+        int result = problem.fib(4);
 
         Assertions.assertThat(result).isEqualTo(3);
     }
 
     @Test
     public void test4() {
-        int result = problem.fib3(2);
+        int result = problem.fib(2);
 
         Assertions.assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void test5() {
-        int result = problem.fib3(3);
+        int result = problem.fib(3);
 
         Assertions.assertThat(result).isEqualTo(2);
     }
 
     @Test
     public void test6() {
-        int result = problem.fib3(4);
+        int result = problem.fib(4);
 
         Assertions.assertThat(result).isEqualTo(3);
     }
