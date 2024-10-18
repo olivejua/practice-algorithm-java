@@ -1,12 +1,13 @@
 package com.olivejua.dfs;
 
+import com.olivejua.graph.LetterCombinationOfPhoneNumber;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import java.util.List;
 
 public class LetterCombinationsOfPhoneNumberTest {
-    LetterCombinationsOfPhoneNumber sut = new LetterCombinationsOfPhoneNumber();
+    LetterCombinationOfPhoneNumber sut = new LetterCombinationOfPhoneNumber();
 
     @Test
     public void test1() {
