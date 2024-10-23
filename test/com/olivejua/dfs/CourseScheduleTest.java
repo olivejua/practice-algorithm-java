@@ -54,6 +54,15 @@ public class CourseScheduleTest extends TestCase {
     }
 
     public void test5() {
+        int numCourses = 2;
+        int[][] prerequisites = new int[][] {};
+
+        boolean result = sut.canFinish(numCourses, prerequisites);
+
+        Assertions.assertThat(result).isTrue();
+    }
+
+    public void test6() {
         int numCourses = 2000;
         int[][] prerequisites = new int[][] {
                 {995,1232}
