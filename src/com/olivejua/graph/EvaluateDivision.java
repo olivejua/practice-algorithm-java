@@ -1,8 +1,6 @@
 package com.olivejua.graph;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class EvaluateDivision {
 
@@ -10,63 +8,56 @@ public class EvaluateDivision {
         Map<String, Map<String, Double>> graph = new HashMap<>();
 
         for (int i = 0; i < equations.size(); i++) {
-            putEdgesToGraph(equations.get(i), values[i], graph);
+            List<String> equation = equations.get(i);
+            String var1 = equation.get(0);
+            String var2 = equation.get(1);
+            double var1ToVar2 = values[i];
+
+            graph.putIfAbsent(var1, new HashMap<>());
+            graph.get(var1).put(var2, var1ToVar2);
+
+            graph.putIfAbsent(var2, new HashMap<>());
+            graph.get(var2).put(var1, 1/var1ToVar2);
         }
 
         double[] result = new double[queries.size()];
+
         for (int i = 0; i < queries.size(); i++) {
             List<String> query = queries.get(i);
-            String var1 = query.get(0);
-            String var2 = query.get(1);
+            String from = query.get(0);
+            String to = query.get(1);
 
-            if (graph.containsKey(var1) && var1.equals(var2)) {
-                result[i] = 1.0;
-            } else if (!graph.containsKey(var1) || !graph.get(var1).containsKey(var2)) {
-                result[i] = -1.0;
+            if (!graph.containsKey(from) || !graph.containsKey(to)) {
+                result[i] = -1;
             } else {
-                result[i] = truncateToFiveDecimalPlaces(graph.get(var1).get(var2));
+                List<String> visited = new ArrayList<>();
+                double answer = edgeNumber(graph, from, to, 1.0, visited);
+                result[i] = truncateToFiveDecimalPlaces(answer);
             }
         }
 
         return result;
     }
 
-    void putEdgesToGraph(List<String> vars, double var1ToVar2, Map<String, Map<String, Double>> graph) {
-        String var1 = vars.get(0);
-        String var2 = vars.get(1);
-
-        if (graph.containsKey(var1) && graph.get(var1).containsKey(var2)) {
-            return;
+    private double edgeNumber(Map<String, Map<String, Double>> graph, String currentLocation, String destination, double value, List<String> visited) {
+        if (visited.contains(currentLocation)) {
+            return -1;
         }
 
-        graph.putIfAbsent(var1, new HashMap<>());
-        Map<String, Double> edgesForVar1 = graph.get(var1);
-        edgesForVar1.put(var2, var1ToVar2);
-        for (Map.Entry<String, Double> entry : edgesForVar1.entrySet()) {
-            if (entry.getKey().equals(var2)) {
-                continue;
+        visited.add(currentLocation);
+        if (currentLocation.equals(destination)) {
+            return value;
+        }
+
+        for (Map.Entry<String, Double> each : graph.get(currentLocation).entrySet()) {
+            double answer = edgeNumber(graph, each.getKey(), destination, value * each.getValue(), new ArrayList<>(visited));
+
+            if (answer != -1) {
+                return answer;
             }
-
-            String var3 = entry.getKey();
-            double var3ToVar1 = graph.get(var3).get(var1);
-
-            putEdgesToGraph(List.of(var3, var2), var3ToVar1 * var1ToVar2, graph);
         }
 
-        graph.putIfAbsent(var2, new HashMap<>());
-        Map<String, Double> edgesForVar2 = graph.get(var2);
-        double var2ToVar1 = 1 / var1ToVar2;
-        edgesForVar2.put(var1, var2ToVar1);
-        for (Map.Entry<String, Double> entry : edgesForVar2.entrySet()) {
-            if (entry.getKey().equals(var1)) {
-                return;
-            }
-
-            String var3 = entry.getKey();
-            double var3ToVar2 = graph.get(var3).get(var2);
-
-            putEdgesToGraph(List.of(var3, var1), var3ToVar2 * var2ToVar1, graph);
-        }
+        return -1;
     }
 
     static double truncateToFiveDecimalPlaces(double value) {
