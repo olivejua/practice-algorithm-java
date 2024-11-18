@@ -35,4 +35,13 @@ public class MaximumSumCircularSubarrayTest {
 
         assertThat(result).isEqualTo(-2);
     }
+
+    @Test
+    public void test4() {
+        int[] nums = {-9,14,24,-14,12,18,-18,-10,-10,-23,-2,-23,11,12,18,-9,9,-29,12,4,-8,15,11,-12,-16,-9,19,-12,22,16};
+
+        int result = problem.maxSubarraySumCircular(nums);
+
+        assertThat(result).isEqualTo(99);
+    }
 }

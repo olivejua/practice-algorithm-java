@@ -3,36 +3,26 @@ package com.olivejua.dp;
 public class MaximumSumCircularSubarray {
 
     public int maxSubarraySumCircular(int[] nums) {
-        int start = 0;
+        int totalSum = 0;
+        int maxSum = Integer.MIN_VALUE;
+        int currentMax = 0;
+        int minSum = Integer.MAX_VALUE;
+        int currentMin = 0;
 
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] < nums[start]) {
-                start = i;
-            }
+        for (int num : nums) {
+            currentMax = Math.max(currentMax + num, num);
+            maxSum = Math.max(maxSum, currentMax);
+
+            currentMin = Math.min(currentMin + num, num);
+            minSum = Math.min(minSum, currentMin);
+
+            totalSum += num;
         }
 
-        start = (start+1) % nums.length;
-        int maxSum = nums[start];
-        int maxIndex = start;
-        int currentSum = nums[start];
-
-        int index = (start+1) % nums.length;
-        while (index != start && index != maxIndex) {
-            if ((currentSum+nums[index]) < nums[index]) {
-                currentSum = nums[index];
-                start = index;
-            } else {
-                currentSum += nums[index];
-            }
-
-            if (maxSum < currentSum) {
-                maxSum = currentSum;
-                maxIndex = index;
-            }
-
-            index = (index+1) % nums.length;
+        if (maxSum < 0) {
+            return maxSum;
         }
 
-        return maxSum;
+        return Math.max(maxSum, totalSum-(minSum));
     }
 }
