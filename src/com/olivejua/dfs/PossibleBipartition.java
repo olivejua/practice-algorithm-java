@@ -32,9 +32,9 @@ public class PossibleBipartition {
             if (colors[neighbor] == 0) {
                 if (!dfs(graph, colors, neighbor, -color)){
                     return false;
-                } else if (colors[neighbor] == color) {
-                    return false;
                 }
+            } else if (colors[neighbor] == color) {
+                return false;
             }
         }
 
