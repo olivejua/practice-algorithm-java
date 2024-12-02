@@ -39,7 +39,7 @@ public class PermutationCycle {
         }
     }
 
-    static void dfs(int idx) {
+    private static void dfs(int idx) {
         visited[idx] = true;
 
         if (visited[arr[idx]]) {
