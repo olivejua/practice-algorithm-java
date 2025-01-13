@@ -3,10 +3,10 @@ package com.olivejua.trie;
 import java.util.Arrays;
 
 public class ImplementTrie implements Trie {
-    private TrieNode[] nodes;
+    private TrieNode root;
 
     public ImplementTrie() {
-        nodes = new TrieNode['z' - 'a' + 1];
+        root = new TrieNode();
     }
 
     @Override
@@ -17,7 +17,7 @@ public class ImplementTrie implements Trie {
 
         char[] letters = word.toCharArray();
         int index = 0;
-        TrieNode[] nodes = this.nodes;
+        TrieNode[] nodes = this.root.children;
         while (index < letters.length) {
             if (nodes[letters[index] - 'a'] == null) {
                 nodes[letters[index] - 'a'] = new TrieNode();
@@ -36,7 +36,7 @@ public class ImplementTrie implements Trie {
     public boolean search(String word) {
         char[] letters = word.toCharArray();
         int index = 0;
-        TrieNode[] nodes = this.nodes;
+        TrieNode[] nodes = this.root.children;
         while (index < letters.length) {
             TrieNode node = nodes[letters[index] - 'a'];
             if (node == null) {
@@ -58,7 +58,7 @@ public class ImplementTrie implements Trie {
     public boolean startsWith(String prefix) {
         char[] letters = prefix.toCharArray();
         int index = 0;
-        TrieNode[] nodes = this.nodes;
+        TrieNode[] nodes = this.root.children;
         while (index < letters.length) {
             TrieNode node = nodes[letters[index] - 'a'];
             if (node == null) {
