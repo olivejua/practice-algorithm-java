@@ -45,21 +45,21 @@ public class LongestConsecutiveSequence {
             set.add(num);
         }
 
-        int longestStreak = 0;
+        int result = 0;
         for (Integer num : set) {
             if (!set.contains(num-1)) {
-                int currentNum = num;
-                int currentStreak = 1;
+                int current = num;
+                int count = 1;
 
-                while (set.contains(currentNum+1)) {
-                    currentNum++;
-                    currentStreak++;
+                while (set.contains(current+1)) {
+                    current++;
+                    count++;
                 }
 
-                longestStreak = Math.max(longestStreak, currentStreak);
+                result = Math.max(result, count);
             }
         }
 
-        return longestStreak;
+        return result;
     }
 }
