@@ -1,4 +1,4 @@
-package com.olivejua.bitMasking;
+package com.olivejua.bitmanipulation;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

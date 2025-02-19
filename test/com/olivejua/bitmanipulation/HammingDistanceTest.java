@@ -1,10 +1,8 @@
-package com.olivejua.bitMasking;
+package com.olivejua.bitmanipulation;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.Assert.*;
 
 public class HammingDistanceTest {
     private final HammingDistance problem = new HammingDistance();

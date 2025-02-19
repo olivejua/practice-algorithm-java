@@ -1,4 +1,4 @@
-package com.olivejua.bitMasking;
+package com.olivejua.bitmanipulation;
 
 public class SingleNumber {
 
