@@ -10,7 +10,7 @@ public class FindTheOriginalArrayOfPrefixXorTest {
     public void test1() {
         int[] pref = new int[] {5,2,0,3,1};
 
-        int[] result = problem.findArray(pref);
+        int[] result = problem.findArray2(pref);
 
         Assertions.assertThat(result).containsExactly(5,7,2,3,2);
     }
@@ -19,7 +19,7 @@ public class FindTheOriginalArrayOfPrefixXorTest {
     public void test2() {
         int[] pref = new int[] {13};
 
-        int[] result = problem.findArray(pref);
+        int[] result = problem.findArray2(pref);
 
         Assertions.assertThat(result).containsExactly(13);
     }

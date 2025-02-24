@@ -12,4 +12,12 @@ public class FindTheOriginalArrayOfPrefixXor {
         return result;
     }
 
+    public int[] findArray2(int[] arr) {
+        for (int i = arr.length-1; i > 0; i--) {
+            arr[i] ^= arr[i-1];
+        }
+
+        return arr;
+    }
+
 }
