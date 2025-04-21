@@ -40,6 +40,6 @@ public class Leetcode_1442 {
             prefixXor[i+1] = prefixXor[i] ^ arr[i];
         }
 
-
+        return 0;
     }
 }
