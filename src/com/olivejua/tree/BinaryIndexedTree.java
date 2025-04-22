@@ -1,5 +1,6 @@
 package com.olivejua.tree;
 
+//307. Range Sum Query - Mutable
 public class BinaryIndexedTree {
     final static int MAX = 1000;
     static int BITree[] = new int[MAX];
