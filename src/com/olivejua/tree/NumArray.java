@@ -10,14 +10,12 @@ public class NumArray {
 
         BIT = new int[nums.length+1];
         for (int i = 0; i < nums.length; i++) {
-            update(i, nums[i]);
+            initBIT(i);
         }
     }
 
-    public void update(int index, int val) {
-        val = val - nums[index];
-        nums[index] -= val;
-
+    private void initBIT(int index) {
+        int val = nums[index];
         index += 1;
 
         while (index <= nums.length) {
@@ -26,14 +24,28 @@ public class NumArray {
         }
     }
 
-    public int sumRange(int left, int right) {
-        int sum = 0;
+    public void update(int index, int val) {
+        int diff = val - nums[index];
+        nums[index] += diff;
 
+        index += 1;
+
+        while (index <= nums.length) {
+            BIT[index] += diff;
+            index += index & (-index);
+        }
+    }
+
+    public int sumRange(int left, int right) {
         left += 1;
         right += 1;
 
-        int index = right;
-        while (index >= left) {
+        return sum(right) - sum(left-1);
+    }
+
+    private int sum(int index) {
+        int sum = 0;
+        while (index > 0) {
             sum += BIT[index];
 
             index -= index & (-index);

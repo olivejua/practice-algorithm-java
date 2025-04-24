@@ -12,11 +12,20 @@ public class NumArrayTest {
         int[] nums = {1,3,5};
         NumArray numArray = new NumArray(nums);
 
-        System.out.println("numArray = " + numArray);
-
         Assertions.assertThat(numArray.sumRange(0, 2)).isEqualTo(9);
         numArray.update(1, 2);
-        Assertions.assertThat(numArray.sumRange(0, 2)).isEqualTo(9);
+        Assertions.assertThat(numArray.sumRange(0, 2)).isEqualTo(8);
+    }
+
+    @Test
+    public void test2() {
+        int[] nums = {9,-8};
+        NumArray numArray = new NumArray(nums);
+        numArray.update(0, 3);
+        Assertions.assertThat(numArray.sumRange(1, 1)).isEqualTo(-8);
+        Assertions.assertThat(numArray.sumRange(0, 1)).isEqualTo(-5);
+        numArray.update(1, -3);
+        Assertions.assertThat(numArray.sumRange(0, 1)).isEqualTo(0);
     }
 
     @Test
@@ -37,39 +46,5 @@ public class NumArrayTest {
     @Test
     public void name() {
         System.out.println(3 & (-3));
-    }
-
-    @Test
-    public void temp() {
-        int target = 1;
-        System.out.println(target);
-        target <<= 1;
-        System.out.println(target);
-        target <<= 1;
-        System.out.println(target);
-        target <<= 1;
-        System.out.println(target);
-        target <<= 1;
-        System.out.println(target);
-    }
-
-    @Test
-    public void test2() {
-        int target = 8;
-        System.out.println(target);
-        target >>= 1;
-        System.out.println(target);
-        target >>= 1;
-        System.out.println(target);
-        target >>= 1;
-        System.out.println(target);
-        target >>= 1;
-        System.out.println(target);
-        target >>= 1;
-        System.out.println(target);
-        target >>= 1;
-        System.out.println(target);
-        target >>= 1;
-        System.out.println(target);
     }
 }
