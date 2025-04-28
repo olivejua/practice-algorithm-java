@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class NumberOfLongestIncreasingSubsequenceTest {
-    private NumberOfLongestIncreasingSubsequence problem = new NumberOfLongestIncreasingSubsequence();
+    private NumberOfLongestIncreasingSubsequence2 problem = new NumberOfLongestIncreasingSubsequence2();
 
     @Test
     public void test1() {
